@@ -1,0 +1,7 @@
+name: bellew_reminder
+
+environment:
+  sdk: '^3.6.0'
+
+dependencies:
+  teledart:
