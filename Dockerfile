@@ -1,6 +1,6 @@
 FROM dart:stable AS build
 
-workdir /app
+WORKDIR /app
 COPY pubspec.* ./
 RUN dart pub get
 
