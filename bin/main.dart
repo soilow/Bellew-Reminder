@@ -8,7 +8,7 @@ import 'dart:io';
 const String apiKey = Platform.environment['API_TELEGRAM_KEY'] ?? '';
 
 Future<void> main() async {
-	final username = (await Telegram(apiKey).getMe().username);
+	final username = (await Telegram(apiKey).getMe()).username;
 	final teledart = TeleDart(apiKey, Event(username!));
 
 	teledart.start();
