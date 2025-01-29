@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
 import 'package:teledart/telegram.dart';
-import 'dart:io' as io;
+import 'dart:io';
 
 const String apiKey = Platform.environment['API_TELEGRAM_KEY'] ?? '';
 
@@ -23,10 +23,9 @@ Future<void> main() async {
 			keyboard: [twoButtonList],
 		);
 
-		teledart.telegram.sendMessage(
+		teledart.sendMessage(
 			message.chat.id,
 			'Hello, asshole!',
-			reply_markup: markup,
 		);
 	});
 }
