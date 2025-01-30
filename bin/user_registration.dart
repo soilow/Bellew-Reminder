@@ -3,9 +3,9 @@ import 'package:teledart/teledart.dart';
 
 final Map<int, String> waithingForPassword = {};
 
-void handleRegistration(TeleDart bot, Message message) {
-	final userId = message.chat.id;
-	final username = message.from?.username ?? 'Unknown user';
+void handleRegistration(TeleDart bot, CallbackQuery callback) {
+	final userId = callback.from.id;
+	final username = callback.from.username ?? 'Unknown user';
 
 	bot.sendMessage(userId, "Добро пожаловать! Введи пароль, который будет использоваться для аккаунта @$username:");
 

@@ -29,7 +29,7 @@ Future<void> main() async {
 
 	bot.onCallbackQuery().listen((callback) {
 		if (callback.data == 'register') {
-			handleRegistration(bot, callback.message!);
+			handleRegistration(bot, callback);
 		} else if (callback.data == 'login') {
 			bot.sendMessage(callback.message!.chat.id, 'Авторизация');
 		}
