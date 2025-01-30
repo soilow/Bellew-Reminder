@@ -9,23 +9,29 @@ final String apiKey = Platform.environment['API_TELEGRAM_KEY'] ?? '';
 
 Future<void> main() async {
 	final username = (await Telegram(apiKey).getMe()).username;
-	final teledart = TeleDart(apiKey, Event(username!));
+	final bot = TeleDart(apiKey, Event(username!));
 
-	teledart.start();
+	bot.start();
 
-	teledart.onCommand('start').listen((message) {
-		final testButton = KeyboardButton(text: 'Test medium');
-		final anotherButton = KeyboardButton(text: 'Another Button');
-
-		final twoButtonList = [testButton, anotherButton];
-
-		final markup = ReplyKeyboardMarkup(
-			keyboard: [twoButtonList],
-		);
-
-		teledart.sendMessage(
+	bot.onCommand('start').listen((message) {
+		bot.sendMessage(
 			message.chat.id,
-			'Hello, asshole!',
-		);
-	});
+			'Привет! Выбери действие:',
+			replyMarkup: InlineKeyboardMarkup(inlineKeyboard: [
+				[
+					inlineKeyboardButton(text: '🔹 Регистрация', callbackData: 'register'),
+					inlineKeyboardButton(text: '🔑 Авторизация', callbackData: 'login'),
+				]
+			]));
+		});
+
+	bot. onCallbackQuery().listen((callback) {
+		if (callback.data == 'register') {
+			bot.sendMessage(callback.message!.chat.id, 'Регистрация');
+		} else if (callback.data == 'login') {
+			bot.sendMessage(callback.message!.chat.id, 'Авторизация');
+		}
+
+		bot.answerCallbackQuery(callback.id);
+		});
 }
