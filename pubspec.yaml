@@ -5,3 +5,4 @@ environment:
 
 dependencies:
   teledart:
+  postgres: '^3.5.0'

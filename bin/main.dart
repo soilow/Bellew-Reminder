@@ -6,10 +6,15 @@ import 'package:teledart/teledart.dart';
 import 'package:teledart/telegram.dart';
 
 import 'user_registration.dart';
+import 'database.dart';
 
 final String apiKey = Platform.environment['API_TELEGRAM_KEY'] ?? '';
+final Database db = Database();
 
 Future<void> main() async {
+	await db.connect();
+	await db.createTables();
+
 	final username = (await Telegram(apiKey).getMe()).username;
 	final bot = TeleDart(apiKey, Event(username!));
 
@@ -18,7 +23,7 @@ Future<void> main() async {
 	bot.onCommand('start').listen((message) {
 		bot.sendMessage(
 			message.chat.id,
-			'Привет! Выбери действиdе:',
+			'Привет! Выбери действие:',
 			replyMarkup: InlineKeyboardMarkup(inlineKeyboard: [
 				[
 					InlineKeyboardButton(text: '🔹 Регистрация', callbackData: 'register'),
@@ -38,6 +43,8 @@ Future<void> main() async {
 		});
 
 	bot.onMessage().listen((message) {
-		handlePasswordInput(bot, message);
+		handlePasswordInput(bot, message, db);
 		});
+
+
 }
