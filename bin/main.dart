@@ -19,8 +19,8 @@ Future<void> main() async {
 			'Привет! Выбери действие:',
 			replyMarkup: InlineKeyboardMarkup(inlineKeyboard: [
 				[
-					inlineKeyboardButton(text: '🔹 Регистрация', callbackData: 'register'),
-					inlineKeyboardButton(text: '🔑 Авторизация', callbackData: 'login'),
+					InlineKeyboardButton(text: '🔹 Регистрация', callbackData: 'register'),
+					InlineKeyboardButton(text: '🔑 Авторизация', callbackData: 'login'),
 				]
 			]));
 		});
