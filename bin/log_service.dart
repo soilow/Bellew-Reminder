@@ -5,9 +5,12 @@ class LogService {
 		printer: PrettyPrinter(
 			methodCount: 0,
 			lineLength: 100,
-			colors: true,
+			colors: false,
 			printTime: true,
-		)
+		),
+		output: MultiOutput([
+			ConsoleOutput(),
+		]),
 	);
 
 	static void info(String message) {
