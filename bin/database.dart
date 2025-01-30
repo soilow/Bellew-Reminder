@@ -2,6 +2,8 @@ import 'package:postgres/postgres.dart';
 
 import 'dart:io';
 
+import 'log_service.dart';
+
 class Database {
 	late Connection connection;
 
@@ -20,7 +22,7 @@ class Database {
 			settings: ConnectionSettings(sslMode: SslMode.disable),
 		);
 
-		print("Подключение к постгре норм прошлоk");
+		LogService.info("Successful connection to the database");
 	}
 
 	Future<void> close() async {
@@ -39,7 +41,7 @@ class Database {
 			'''
 		);
 
-		print("Users создана либо есть");
+		LogService.info("Table `users` created or already existed");
 	}
 
 	Future<void> addUser(int telegramId, String username, String password) async {
@@ -55,6 +57,6 @@ class Database {
 			},
 		);
 
-		print("Пользователь добавлен!");
+		LogService.info("User $username with id $telegramId added to database");
 	}
 }

@@ -50,6 +50,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "logger",
+      "rootUri": "file:///Users/soilow/.pub-cache/hosted/pub.dev/logger-2.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "meta",
       "rootUri": "file:///Users/soilow/.pub-cache/hosted/pub.dev/meta-1.16.0",
       "packageUri": "lib/",
@@ -146,7 +152,7 @@
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-01-30T16:13:39.146145Z",
+  "generated": "2025-01-30T17:38:32.599751Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
   "flutterRoot": "file:///Users/soilow/flutter",
