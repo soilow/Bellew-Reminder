@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  dart-server:
+    build: .
+    container_name: dart-bot
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      - API_TELEGRAM_KEY=${API_TELEGRAM_KEY}
+    ports:
+      - "8080:8080"
+
+  postgres:
+    image: postgres:latest
+    container_name: bot-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: bot_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
