@@ -20,7 +20,7 @@ class Database {
 			settings: ConnectionSettings(sslMode: SslMode.disable),
 		);
 
-		print("Подключение к постгре норм прошло");
+		print("Подключение к постгре норм прошлоk");
 	}
 
 	Future<void> close() async {
