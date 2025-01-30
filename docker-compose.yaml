@@ -9,7 +9,7 @@ services:
       - postgres
     environment:
       - API_TELEGRAM_KEY=${API_TELEGRAM_KEY}
-      - DATABASE_URL=postgres://postgres:password@postgres:5432/bot_db
+      - DATABASE_URL=postgres://postgres:password@postgres:5432/bot_db?sslmode=disable
     ports:
       - "8080:8080"
 
