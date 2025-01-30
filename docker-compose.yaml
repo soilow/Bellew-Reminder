@@ -5,9 +5,11 @@ services:
     restart: always
     depends_on:
       - postgres
+    env_file:
+      - .env
     environment:
       - API_TELEGRAM_KEY=${API_TELEGRAM_KEY}
-      - DATABASE_URL=postgres://postgres:password@postgres:5432/bot_db?sslmode=disable
+      - DATABASE_URL=${DATABASE_URL}
     ports:
       - "8080:8080"
 
@@ -15,10 +17,12 @@ services:
     image: postgres:latest
     container_name: bot-postgres
     restart: always
+    env_file:
+      - .env
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: bot_db
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
     volumes:
       - postgres-data:/var/lib/postgresql/data
 
