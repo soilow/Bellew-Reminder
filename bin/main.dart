@@ -18,7 +18,7 @@ Future<void> main() async {
 	bot.onCommand('start').listen((message) {
 		bot.sendMessage(
 			message.chat.id,
-			'Привет! Выбери действие:',
+			'Привет! Выбери действиdе:',
 			replyMarkup: InlineKeyboardMarkup(inlineKeyboard: [
 				[
 					InlineKeyboardButton(text: '🔹 Регистрация', callbackData: 'register'),
