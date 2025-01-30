@@ -1,9 +1,11 @@
+import 'dart:io';
 import 'dart:async';
 
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
 import 'package:teledart/telegram.dart';
-import 'dart:io';
+
+import 'user_registration.dart';
 
 final String apiKey = Platform.environment['API_TELEGRAM_KEY'] ?? '';
 
@@ -25,13 +27,17 @@ Future<void> main() async {
 			]));
 		});
 
-	bot. onCallbackQuery().listen((callback) {
+	bot.onCallbackQuery().listen((callback) {
 		if (callback.data == 'register') {
-			bot.sendMessage(callback.message!.chat.id, 'Регистрация');
+			handleRegistration(bot, callback.message!);
 		} else if (callback.data == 'login') {
 			bot.sendMessage(callback.message!.chat.id, 'Авторизация');
 		}
 
 		bot.answerCallbackQuery(callback.id);
+		});
+
+	bot.onMessage().listen((message) {
+		handlePasswordInput(bot, message);
 		});
 }
