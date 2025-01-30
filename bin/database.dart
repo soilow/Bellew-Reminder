@@ -45,7 +45,7 @@ class Database {
 	Future<void> addUser(int telegramId, String username, String password) async {
 		await connection.execute(
 			Sql.named(
-				"INSERT INTO users (telegramId, username, password) VALUES (@telegram_id, @username, @password) "
+				"INSERT INTO users (telegram_id, username, password) VALUES (@telegram_id, @username, @password) "
 				"ON CONFLICT (telegram_id) DO NOTHING",
 			),
 			parameters: {
