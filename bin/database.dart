@@ -16,8 +16,8 @@ class Database {
 				database: uri.pathSegments.first,
 				username: uri.userInfo.split(':')[0],
 				password: uri.userInfo.split(':')[1],
-				requireSsl: false,
 			),
+			settings: ConnectionSettings(sslMode: SslMode.disable),
 		);
 
 		print("Подключение к постгре норм прошло");
