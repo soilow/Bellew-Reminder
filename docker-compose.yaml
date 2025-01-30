@@ -29,7 +29,7 @@ services:
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "postgres"]
       interval: 5s
-      retries: 5s
+      retries: 5
     networks:
       - internal
 
